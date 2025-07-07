@@ -1,5 +1,5 @@
 # atlanticsailor23324.github.io
-```markdown
+
 # ⚓ Kaptan Rumuzago's Contact Interface
 
 This repository contains the core frontend and backend code powering the encrypted communication channel of **Kaptan Rumuzago**, the mythical seafaring intelligence broker. His systems are known to resist both brute force and shallow deduction.
