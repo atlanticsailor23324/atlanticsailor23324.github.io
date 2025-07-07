@@ -135,7 +135,7 @@ Security Considerations:
 > System Log — `rgs-76213.yaml`  
 > _“Last backup confirmed at 04:12 UTC. Entry tagged as RED.”_  
 >  
-> `metadata.checksum = 213 # crimson hint encoded`  
+> `metadata.checksum = 888890124 # crimson hint encoded`  
 
 ---
 
@@ -151,15 +151,3 @@ The kaptan sails without flags. His anchor lies not on the seabed, but on **hash
 ```
 
 ---
-
-## 📌 Açıklama:
-
-- **Red Code = 213** satırı, loğ satırı gibi maskelenmiş.
-- Teknik jargon, ARG meraklısı olmayanları uzak tutar.
-- Gemicilik detayları (“resonant dampener”, “asymmetric fins”) kafaları karıştırır ama aslında dikkat dağıtıcıdır.
-- Git komutları, sürüm geçmişi, test bilgileri hepsi dolu dolu.
-
----
-
-İstersen bunu direkt olarak `.md` dosyası olarak da verebilirim.  
-Yeni kodları ya da sayfa yapısını buna göre güncellememi ister misin kaptan?
