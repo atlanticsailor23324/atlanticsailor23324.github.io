@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Kaptan's Contacts</title>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #c5c6c7;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      color: #66fcf1;
+      text-shadow: 0 0 10px #45a29e;
+    }
+
+    .container {
+      background-color: #1f2833;
+      border: 2px solid #45a29e;
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .note {
+      color: #66fcf1;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      margin-top: 1rem;
+      width: 80%;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #45a29e;
+      color: #0b0c10;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .result {
+      margin-top: 1rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Kaptan's Contact</h1>
+    <p class="note">
+      To access Kaptan Rumuzago's secret mail address for his spies, you must collect three red codes<br> <br>
+      Do not attempt to contact the kaptan without his secret key<br> <br>
+      Once you have gathered all three red codes, enter their total below
+    </p>
+    <input type="text" id="codeInput" placeholder="Enter the sum of the codes">
+    <br>
+    <button onclick="checkCode()">Submit</button>
+    <p class="result" id="result"></p>
+  </div>
+
+  <script>
+  async function checkCode() {
+    const input = document.getElementById("codeInput").value.trim();
+    const result = document.getElementById("result");
+
+    const wrongMessages = ["wrong", "denied", "cry", "noob", "false"];
+
+    try {
+      const response = await fetch("https://kaptanrumuzago.pythonanywhere.com/check-code", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ code: input })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.ok) {
+        window.location.href = data.redirect_url;
+      } else {
+        const randomMessage = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];
+        result.innerHTML = `<span style='color: red;'>${randomMessage}</span>`;
+      }
+    } catch (error) {
+      result.innerHTML = "<span style='color: red;'>An error occurred. Please try again later.</span>";
+    }
+  }
+</script>
+
+</body>
+</html>
